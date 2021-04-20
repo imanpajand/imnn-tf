@@ -1,17 +1,17 @@
 import setuptools
 
-with open("README.rst", "r") as fh:
-    long_description = fh.read()
+with open("README.rst", "r") as f:
+    long_description = f.read()
 
 setuptools.setup(
     name="imnn-tf",
-    version="0.2dev",
+    version="0.2",
     author="Tom Charnock",
     author_email="tom@charnock.fr",
     description="Using neural networks to extract sufficient statistics from \
         data by maximising the Fisher information",
     long_description=long_description,
-    long_description_content_type="text/reStructuredText",
+    long_description_content_type="text/x-rst",
     url="https://bitbucket.org/tomcharnock/imnn-tf",
     packages=["IMNN", "IMNN.LFI", "IMNN.utils"],
     classifiers=[
@@ -26,4 +26,5 @@ setuptools.setup(
           "numpy>=1.16.0",
           "scipy>=1.4.1",
           "matplotlib"],
+    include_package_data=True
 )

@@ -1,3 +1,2 @@
-include eq/*.svg
 include examples/*.ipynb
 include examples/*.py

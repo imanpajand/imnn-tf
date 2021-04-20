@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from IMNN.utils import TFRecords
 from IMNN.LFI.LFI import GaussianApproximation
 
-__version__ = "0.2.7"
+__version__ = "0.2.8"
 __author__ = "Tom Charnock"
 
 class GenerateGaussianNoise():

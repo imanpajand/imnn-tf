@@ -4,15 +4,15 @@ with open("README.rst", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="IMNN",
-    version="0.2a5",
+    name="imnn-tf",
+    version="0.2dev",
     author="Tom Charnock",
-    author_email="charnock@iap.fr",
+    author_email="tom@charnock.fr",
     description="Using neural networks to extract sufficient statistics from \
         data by maximising the Fisher information",
     long_description=long_description,
     long_description_content_type="text/reStructuredText",
-    url="https://github.com/tomcharnock/IMNN.git",
+    url="https://bitbucket.org/tomcharnock/imnn-tf",
     packages=["IMNN", "IMNN.LFI", "IMNN.utils"],
     classifiers=[
         "Programming Language :: Python :: 3.7",

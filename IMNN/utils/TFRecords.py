@@ -1,4 +1,4 @@
-__version__ = '0.2a5'
+__version__ = '0.2dev'
 __author__ = "Tom Charnock"
 
 import tensorflow as tf
@@ -9,7 +9,7 @@ import sys
 
 class TFRecords():
     """ Module for writing simulations to TFRecord to be used by the IMNN
-    
+
     Attributes
     __________
     record_size : int
@@ -20,10 +20,10 @@ class TFRecords():
     def __init__(self, record_size=150, padding=5):
         self.record_size = record_size * int(1e6)
         self.padding = padding
-    
+
     def write_record(self, n_sims, get_simulation, fiducial=True, n_params=None, validation=False, directory=None, filename=None):
         """Write all simulations to set of tfrecords
-        
+
         Parameters
         __________
         n_sims : int
@@ -51,7 +51,7 @@ class TFRecords():
         while record:
             with tf.io.TFRecordWriter(".".join((
                     "_".join((
-                        self.file, 
+                        self.file,
                         "{}".format(counter).zfill(self.padding))),
                     "tfrecords"))) as self.writer:
                 while self.get_seed(simulation, fiducial) < n_sims:
@@ -61,7 +61,7 @@ class TFRecords():
                         break
             if self.get_seed(simulation, fiducial) == n_sims:
                 record = False
-    
+
     def fiducial_serialiser(self, seed, counter, get_simulation):
         print("seed={}, record={}".format(seed, counter), end="\r")
         data = get_simulation(seed)
@@ -73,7 +73,7 @@ class TFRecords():
         self.writer.write(example.SerializeToString())
         seed += 1
         return seed
-    
+
     def derivative_serialiser(self, simulation, counter, get_simulation, n_params):
         seed, derivative, parameter = simulation
         break_out = False
@@ -105,14 +105,14 @@ class TFRecords():
             seed += 1
             derivative = 0
         return (seed, derivative, parameter)
-    
+
     def get_serialiser(self, fiducial, get_simulation, n_params):
         if fiducial:
             serialiser = self.fiducial_serialiser
         else:
             serialiser = lambda x, y, z : self.derivative_serialiser(x, y, z, n_params)
         return lambda x, y : serialiser(x, y, get_simulation)
-       
+
     def get_file(self, directory, filename, fiducial,validation):
         if filename is None:
             if fiducial:
@@ -126,26 +126,26 @@ class TFRecords():
         else:
             file = filename
         return file
-    
+
     def check_size(self, counter):
         return os.path.getsize(".".join((
                     "_".join((
-                        self.file, 
+                        self.file,
                         "{}".format(counter).zfill(self.padding))),
                     "tfrecords"))) > self.record_size
-    
+
     def get_initial_seed(self, fiducial):
         if fiducial:
             return 0
         else:
             return (0, 0, 0)
-    
+
     def get_seed(self, simulation, fiducial):
         if fiducial:
             return simulation
         else:
             return simulation[0]
-        
+
     def check_func(self, get_simulation, fiducial):
         if fiducial:
             if len(signature(get_simulation).parameters) != 1:
@@ -156,16 +156,16 @@ class TFRecords():
                 print("`get_simulations` must be a function which takes a seed, "
                       "derivative and parameter as an argument.")
                 sys.exit()
-                
+
     def check_params(self, n_params, fiducial):
         if not fiducial:
             if n_params is None:
                 print("`n_params` must be supplied when making derivative record.")
                 sys.exit()
-                
+
     def _bytes_feature(self, value):
         if isinstance(value, type(tf.constant(0))):
-            value = value.numpy() 
+            value = value.numpy()
         return tf.train.Feature(bytes_list=tf.train.BytesList(value=[value]))
 
     def _int64_feature(self, value):

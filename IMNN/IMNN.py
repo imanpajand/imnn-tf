@@ -9,7 +9,7 @@ Still some docstrings which need finishing
 Use precomputed external covariance and derivatives"""
 
 
-__version__ = '0.2a5'
+__version__ = '0.2dev'
 __author__ = "Tom Charnock"
 
 
@@ -103,12 +103,12 @@ class IMNN:
     history : dict
         history object for saving training statistics.
     """
-    def __init__(self, n_s, n_d, n_params, n_summaries, 
-                 θ_fid, δθ, input_shape, fiducial, derivative, 
-                 validation_fiducial, validation_derivative, 
+    def __init__(self, n_s, n_d, n_params, n_summaries,
+                 θ_fid, δθ, input_shape, fiducial, derivative,
+                 validation_fiducial, validation_derivative,
                  model=None, optimiser=tf.keras.optimizers.Adam(),
-                 dtype=tf.float32, itype=tf.int32, save=False, load=False, weights=None, 
-                 verbose=True, directory=None, filename=None, at_once=None, 
+                 dtype=tf.float32, itype=tf.int32, save=False, load=False, weights=None,
+                 verbose=True, directory=None, filename=None, at_once=None,
                  map_fn=None, check_shape=True):
         """Initialises attributes and calculates useful constants
 
@@ -351,7 +351,7 @@ class IMNN:
         if load:
             self.load_model(optimiser, weights=weights)
             self.variables = self.model.get_weights()
-        else:    
+        else:
             self.model = self.u.check_model(model,
                                             self.input_shape,
                                             self.n_summaries)
@@ -361,7 +361,7 @@ class IMNN:
                 if self.verbose:
                     print("saving model to {}".format("/".join((self.directory, self.filename))))
                 self.model.save("/".join((self.directory, self.filename)))
-                
+
     def update_variables(self, variables):
             """Updates the initial model trainable variables
 
@@ -1440,17 +1440,17 @@ class IMNN:
         return tf.add(
             self.θ_fid,
             tf.einsum(
-                "ij,jk,kl,ml->mi", 
-                self.Finv, 
-                self.dμ_dθ, 
+                "ij,jk,kl,ml->mi",
+                self.Finv,
+                self.dμ_dθ,
                 self.Cinv,
                 tf.subtract(
                     self.model(d),
                     self.μ)))
-    
+
     def save_estimator(self, filename):
         """Save the parameters necessary to make an estimate using the IMNN
-        
+
         Parameters
         __________
         filename : str
@@ -1506,7 +1506,7 @@ class IMNN:
             total = float("inf")
         else:
             total = n_iterations
-        
+
         self.get_regularisation_rate(λ, ϵ)
 
         if checkpoint is not None:
@@ -1611,8 +1611,8 @@ class IMNN:
                 (self.directory, self.filename, weight_file))))
             self.save_estimator("{}.npz".format("/".join(
                 (self.directory, self.filename, "estimator"))))
-            
-            
+
+
     def plot(self, regulariser=True, known_det_fisher=None, figsize=(10, 15)):
         import matplotlib.pyplot as plt
         if regulariser:
@@ -1626,7 +1626,7 @@ class IMNN:
         ax[0].plot(epochs, self.history["val_det_F"], color="C1",
            label=r'$|{\bf F}_{\alpha\beta}|$ from validation data')
         if known_det_fisher is not None:
-            ax[0].axhline(known_det_fisher, color="black", 
+            ax[0].axhline(known_det_fisher, color="black",
                           linestyle="dashed")
         ax[0].legend(frameon=False)
         ax[0].set_xlim([1, epochs[-1]])
@@ -1636,9 +1636,9 @@ class IMNN:
         ax[1].plot(epochs, self.history["val_det_C"], color="C1",
            label=r'$|{\bf C}|$ from validation data')
         ax[1].plot(epochs, self.history["det_Cinv"], color="C0",
-                   linestyle="dashed", 
+                   linestyle="dashed",
                    label=r'$|{\bf C}^{-1}|$ from training data')
-        ax[1].plot(epochs, self.history["val_det_Cinv"], color="C1", 
+        ax[1].plot(epochs, self.history["val_det_Cinv"], color="C1",
                    linestyle="dashed",
                    label=r'$|{\bf C}^{-1}|$ from validation data')
         ax[1].axhline(1., color="black", linestyle="dashed")

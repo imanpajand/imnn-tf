@@ -9,14 +9,14 @@ Still some docstrings which need finishing
 Use precomputed external covariance and derivatives"""
 
 
-__version__ = '0.2.8'
+__version__ = '0.2.9'
 __author__ = "Tom Charnock"
 
 
 import tensorflow as tf
 import numpy as np
 import tqdm
-from IMNN.utils import utils
+from imnn_tf.utils import utils
 
 
 class IMNN:
@@ -168,7 +168,7 @@ class IMNN:
 
         Calls
         _____
-        IMNN.utils.utils.type_checking(any, type, str, opt(str))
+        imnn_tf.utils.utils.type_checking(any, type, str, opt(str))
             checks that value exists and is of the correct type
         init_attributes(int, int, int, int, tfdtype, tfdtype, bool, str, bool)
             Initialises all attributes and sets necessary constants
@@ -180,7 +180,7 @@ class IMNN:
         set_model(model, optimiser)
             loads the model and optimiser as attributes
         """
-        self.u = utils.utils(verbose=verbose)
+        self.u = utils(verbose=verbose)
         check_shape = self.u.type_checking(check_shape, True, "check_shape")
         self.init_attributes(n_s, n_d, n_params, n_summaries, dtype, itype,
                              save, filename, directory, verbose)
@@ -227,9 +227,9 @@ class IMNN:
         _____
         initialise_history()
             returns dictionary of lists to be populated during training
-        IMNN.utils.utils.type_checking(any, type, str, opt(str))
+        imnn_tf.utils.utils.type_checking(any, type, str, opt(str))
             checks that value exists and is of the correct type
-        IMNN.utils.utils.positive_integer(int, str) -> int
+        imnn_tf.utils.utils.positive_integer(int, str) -> int
             checks whether parameter is positive integer and error otherwise
         """
         self.verbose = self.u.type_checking(verbose, True, "verbose")
@@ -405,7 +405,7 @@ class IMNN:
 
         Calls
         _____
-        IMNN.utils.utils.check_shape(any, type, tuple, str, opt(str))
+        imnn_tf.utils.utils.check_shape(any, type, tuple, str, opt(str))
             checks that value is of the correct type and shape
         """
         self.F = tf.zeros((self.n_params, self.n_params),
@@ -490,9 +490,9 @@ class IMNN:
 
         Calls
         _____
-        IMNN.utils.utils.check_shape(any, type, tuple, str, opt(str))
+        imnn_tf.utils.utils.check_shape(any, type, tuple, str, opt(str))
             checks that value is of the correct type and shape
-        IMNN.utils.utils.data_error(opt(bool))
+        imnn_tf.utils.utils.data_error(opt(bool))
             prints warning if data is not correct
         build_dataset(func, bool, opt(func))
             builder for the tf.data.Dataset based on loading function
@@ -1494,7 +1494,7 @@ class IMNN:
         initialise_history()
             sets up dictionary of lists for collecting training diagnostics
 
-        IMNN.utils.utils.isnotebook()
+        imnn_tf.utils.utils.isnotebook()
             checks whether IMNN being trained in jupyter notebook
 
         """

@@ -8,7 +8,7 @@ The documentation for this module is not complete, and stability may be patchy (
 """
 
 
-__version__ = '0.2.8'
+__version__ = '0.2.9'
 __author__ = "Tom Charnock"
 
 
@@ -17,7 +17,7 @@ import tensorflow as tf
 import matplotlib.pyplot as plt
 from scipy.ndimage import gaussian_filter
 import sys
-from IMNN.utils.utils import utils
+from imnn_tf.utils import utils
 import tqdm
 np.set_printoptions(precision=3, suppress=True)
 

@@ -2,10 +2,10 @@ import argparse
 import sys
 import numpy as np
 import matplotlib.pyplot as plt
-from IMNN.utils import TFRecords
-from IMNN.LFI.LFI import GaussianApproximation
+from imnn_tf.utils import TFRecords
+from imnn_tf.lfi import GaussianApproximation
 
-__version__ = "0.2.8"
+__version__ = "0.2.9"
 __author__ = "Tom Charnock"
 
 class GenerateGaussianNoise():
@@ -200,7 +200,7 @@ class GenerateGaussianNoise():
                 np.save("{}/validation_derivative_small.npy".format(directory), result[6])
 
         if (ftype=="both") or (ftype=="tfrecords"):
-            writer = TFRecords.TFRecords(record_size=record_size)
+            writer = TFRecords(record_size=record_size)
 
             writer.write_record(
                 n_sims=result[0]["n_s"],

@@ -5,7 +5,7 @@ with open("README.rst", "r") as f:
 
 setuptools.setup(
     name="imnn-tf",
-    version="0.2.8",
+    version="0.2.9",
     author="Tom Charnock",
     author_email="tom@charnock.fr",
     description="Using neural networks to extract sufficient statistics from \
@@ -13,7 +13,7 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/x-rst",
     url="https://bitbucket.org/tomcharnock/imnn-tf",
-    packages=["IMNN", "IMNN.LFI", "IMNN.utils"],
+    packages=["imnn_tf", "imnn_tf.lfi", "imnn_tf.utils"],
     classifiers=[
         "Programming Language :: Python :: 3.7",
         "License :: OSI Approved :: MIT License",

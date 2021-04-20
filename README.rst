@@ -622,6 +622,7 @@ The module is under constant development, and progress can be checked in the ``d
 - Write unit tests
 
 .. |bf_d| image:: https://bitbucket.org/tomcharnock/imnn-tf/raw/master/eq/png/bf_d.png
+  :height: 1em
 .. |f_bf_d_to_bf_x| image:: https://bitbucket.org/tomcharnock/imnn-tf/raw/master/eq/f_bf_d_to_bf_x.svg
 .. |bf_x| image:: https://bitbucket.org/tomcharnock/imnn-tf/raw/master/eq/bf_x.svg
 .. |bf_d^textrm_fid_| image:: https://bitbucket.org/tomcharnock/imnn-tf/raw/master/eq/bf_d^textrm_fid_.svg

@@ -10,27 +10,27 @@ Specifically, the neural network takes some data, |bf_d|, and maps it to a compr
 
 To train the neural network a batch of simulations |bf_d^textrm_fid_| created at a fiducial parameter value |boldsymbol_theta| for training (and another for validation). These simulations are compressed by the neural network to obtain some statistic |bf_x^textrm_fid_|, i.e. the output of the neural network. We can use these to calculate the covariance, |bf_C_f|, of the compressed summaries. The sensitivity to model parameters uses the derivative of the simulation. This can be provided analytically or numercially using  |bf_d^textrm_fid_-2| created above the fiducial parameter value |boldsymbol_theta-2| and |bf_d^textrm_fid_-1| created below the fiducial parameter value |boldsymbol_theta-1| The simulations are compressed using the network and used to find mean of the summaries
 
-.. image:: eq/frac_partial_bol.svg
+.. image:: https://bitbucket.org/tomcharnock/imnn-tf/src/master/eq/frac_partial_bol.svg
 
 If the derivative of the simulations with respect to the parameters can be calculated analytically (or via autograd, etc.) then that can be used directly using the chain rule since the derivative of the network outputs with respect to the network input can be calculated easily
 
-.. image:: eq/frac_partial_bol-1.svg
+.. image:: https://bitbucket.org/tomcharnock/imnn-tf/src/master/eq/frac_partial_bol-1.svg
 
 We then use |bf_C_f| and |partial_boldsymb| to calculate the Fisher information
 
-.. image:: eq/bf_F_alpha_beta_.svg
+.. image:: https://bitbucket.org/tomcharnock/imnn-tf/src/master/eq/bf_F_alpha_beta_.svg
 
 Since any linear rescaling of the summaries is also a summary, when maximising the Fisher information we set their scale using
 
-.. image:: eq/Lambda_=_-_ln|_b.svg
+.. image:: https://bitbucket.org/tomcharnock/imnn-tf/src/master/eq/Lambda_=_-_ln|_b.svg
 
 where
 
-.. image:: eq/Lambda_2_=_||_bf.svg
+.. image:: https://bitbucket.org/tomcharnock/imnn-tf/src/master/eq/Lambda_2_=_||_bf.svg
 
 is a regularisation term whose strength is dictated by
 
-.. image:: eq/r(_Lambda_2)=_fr.svg
+.. image:: https://bitbucket.org/tomcharnock/imnn-tf/src/master/eq/r(_Lambda_2)=_fr.svg
 
 with |lambda| as a strength and |alpha| as a rate parameter which can be determined from a closeness condition on the Frobenius norm of the difference between the convariance (and inverse covariance) from the identity matrix.
 
@@ -621,17 +621,17 @@ The module is under constant development, and progress can be checked in the ``d
 
 - Write unit tests
 
-.. |bf_d| image:: eq/bf_d.svg
-.. |f_bf_d_to_bf_x| image:: eq/f_bf_d_to_bf_x.svg
+.. |bf_d| image:: https://bitbucket.org/tomcharnock/imnn-tf/src/master/eq/bf_d.svg
+.. |f_bf_d_to_bf_x| image:: https://bitbucket.org/tomcharnock/imnn-tf/src/master/eq/f_bf_d_to_bf_x.svg
 .. |bf_x| image:: eq/bf_x.svg
-.. |bf_d^textrm_fid_| image:: eq/bf_d^textrm_fid_.svg
-.. |boldsymbol_theta| image:: eq/boldsymbol_theta.svg
-.. |bf_x^textrm_fid_| image:: eq/bf_x^textrm_fid_.svg
-.. |bf_C_f| image:: eq/bf_C_f.svg
-.. |bf_d^textrm_fid_-1| image:: eq/bf_d^textrm_fid_-1.svg
-.. |boldsymbol_theta-1| image:: eq/boldsymbol_theta-1.svg
-.. |bf_d^textrm_fid_-2| image:: eq/bf_d^textrm_fid_-2.svg
-.. |boldsymbol_theta-2| image:: eq/boldsymbol_theta-2.svg
-.. |partial_boldsymb| image:: eq/partial_boldsymb.svg
-.. |lambda| image:: eq/lambda.svg
-.. |alpha| image:: eq/alpha.svg
+.. |bf_d^textrm_fid_| image:: https://bitbucket.org/tomcharnock/imnn-tf/src/master/eq/bf_d^textrm_fid_.svg
+.. |boldsymbol_theta| image:: https://bitbucket.org/tomcharnock/imnn-tf/src/master/eq/boldsymbol_theta.svg
+.. |bf_x^textrm_fid_| image:: https://bitbucket.org/tomcharnock/imnn-tf/src/master/eq/bf_x^textrm_fid_.svg
+.. |bf_C_f| image:: https://bitbucket.org/tomcharnock/imnn-tf/src/master/eq/bf_C_f.svg
+.. |bf_d^textrm_fid_-1| image:: https://bitbucket.org/tomcharnock/imnn-tf/src/master/eq/bf_d^textrm_fid_-1.svg
+.. |boldsymbol_theta-1| image:: https://bitbucket.org/tomcharnock/imnn-tf/src/master/eq/boldsymbol_theta-1.svg
+.. |bf_d^textrm_fid_-2| image:: https://bitbucket.org/tomcharnock/imnn-tf/src/master/eq/bf_d^textrm_fid_-2.svg
+.. |boldsymbol_theta-2| image:: https://bitbucket.org/tomcharnock/imnn-tf/src/master/eq/boldsymbol_theta-2.svg
+.. |partial_boldsymb| image:: https://bitbucket.org/tomcharnock/imnn-tf/src/master/eq/partial_boldsymb.svg
+.. |lambda| image:: https://bitbucket.org/tomcharnock/imnn-tf/src/master/eq/lambda.svg
+.. |alpha| image:: https://bitbucket.org/tomcharnock/imnn-tf/src/master/eq/alpha.svg

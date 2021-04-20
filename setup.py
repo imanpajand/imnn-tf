@@ -5,7 +5,7 @@ with open("README.rst", "r") as f:
 
 setuptools.setup(
     name="imnn-tf",
-    version="0.2.1",
+    version="0.2.2",
     author="Tom Charnock",
     author_email="tom@charnock.fr",
     description="Using neural networks to extract sufficient statistics from \

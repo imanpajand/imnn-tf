@@ -10,27 +10,27 @@ Specifically, the neural network takes some data, |bf_d|, and maps it to a compr
 
 To train the neural network a batch of simulations |bf_d^textrm_fid_| created at a fiducial parameter value |boldsymbol_theta| for training (and another for validation). These simulations are compressed by the neural network to obtain some statistic |bf_x^textrm_fid_|, i.e. the output of the neural network. We can use these to calculate the covariance, |bf_C_f|, of the compressed summaries. The sensitivity to model parameters uses the derivative of the simulation. This can be provided analytically or numercially using  |bf_d^textrm_fid_-2| created above the fiducial parameter value |boldsymbol_theta-2| and |bf_d^textrm_fid_-1| created below the fiducial parameter value |boldsymbol_theta-1| The simulations are compressed using the network and used to find mean of the summaries
 
-.. image:: https://bitbucket.org/tomcharnock/imnn-tf/raw/master/eq/png/frac_partial_bol.png
+.. image:: https://github.com/InformationMaximisingNeuralNetworks/imnn-tf/raw/master/eq/png/frac_partial_bol.png
 
 If the derivative of the simulations with respect to the parameters can be calculated analytically (or via autograd, etc.) then that can be used directly using the chain rule since the derivative of the network outputs with respect to the network input can be calculated easily
 
-.. image:: https://bitbucket.org/tomcharnock/imnn-tf/raw/master/eq/png/frac_partial_bol-1.png
+.. image:: https://github.com/InformationMaximisingNeuralNetworks/imnn-tf/raw/master/eq/png/frac_partial_bol-1.png
 
 We then use |bf_C_f| and |partial_boldsymb| to calculate the Fisher information
 
-.. image:: https://bitbucket.org/tomcharnock/imnn-tf/raw/master/eq/png/bf_F_alpha_beta_.png
+.. image:: https://github.com/InformationMaximisingNeuralNetworks/imnn-tf/raw/master/eq/png/bf_F_alpha_beta_.png
 
 Since any linear rescaling of the summaries is also a summary, when maximising the Fisher information we set their scale using
 
-.. image:: https://bitbucket.org/tomcharnock/imnn-tf/raw/master/eq/png/Lambda_%3D_-_ln%7C_b.png
+.. image:: https://github.com/InformationMaximisingNeuralNetworks/imnn-tf/raw/master/eq/png/Lambda_%3D_-_ln%7C_b.png
 
 where
 
-.. image:: https://bitbucket.org/tomcharnock/imnn-tf/raw/master/eq/png/Lambda_2_%3D_%7C%7C_bf.png
+.. image:: https://github.com/InformationMaximisingNeuralNetworks/imnn-tf/raw/master/eq/png/Lambda_2_%3D_%7C%7C_bf.png
 
 is a regularisation term whose strength is dictated by
 
-.. image:: https://bitbucket.org/tomcharnock/imnn-tf/raw/master/eq/png/r(_Lambda_2)=_fr.png
+.. image:: https://github.com/InformationMaximisingNeuralNetworks/imnn-tf/raw/master/eq/png/r(_Lambda_2)=_fr.png
 
 with |lambda| as a strength and |alpha| as a rate parameter which can be determined from a closeness condition on the Frobenius norm of the difference between the covariance (and inverse covariance) from the identity matrix.
 
@@ -56,7 +56,7 @@ The code can be installed using::
 
 or::
 
-  git clone https://bitbucket.org/tomcharnock/imnn-tf.git
+  git clone https://github.com/InformationMaximisingNeuralNetworks/imnn-tf.git
   cd imnn-tf
   python3 setup.py install
 
@@ -621,17 +621,17 @@ The module is under constant development, and progress can be checked in the ``d
 
 - Write unit tests
 
-.. |bf_d| image:: https://bitbucket.org/tomcharnock/imnn-tf/raw/master/eq/png/bf_d.png
-.. |f_bf_d_to_bf_x| image:: https://bitbucket.org/tomcharnock/imnn-tf/raw/master/eq/png/f_bf_d_to_bf_x.png
-.. |bf_x| image:: https://bitbucket.org/tomcharnock/imnn-tf/raw/master/eq/png/bf_x.png
-.. |bf_d^textrm_fid_| image:: https://bitbucket.org/tomcharnock/imnn-tf/raw/master/eq/png/bf_d^textrm_fid_.png
-.. |boldsymbol_theta| image:: https://bitbucket.org/tomcharnock/imnn-tf/raw/master/eq/png/boldsymbol_theta.png
-.. |bf_x^textrm_fid_| image:: https://bitbucket.org/tomcharnock/imnn-tf/raw/master/eq/png/bf_x^textrm_fid_.png
-.. |bf_C_f| image:: https://bitbucket.org/tomcharnock/imnn-tf/raw/master/eq/png/bf_C_f.png
-.. |bf_d^textrm_fid_-1| image:: https://bitbucket.org/tomcharnock/imnn-tf/raw/master/eq/png/bf_d^textrm_fid_-1.png
-.. |boldsymbol_theta-1| image:: https://bitbucket.org/tomcharnock/imnn-tf/raw/master/eq/png/boldsymbol_theta-1.png
-.. |bf_d^textrm_fid_-2| image:: https://bitbucket.org/tomcharnock/imnn-tf/raw/master/eq/png/bf_d^textrm_fid_-2.png
-.. |boldsymbol_theta-2| image:: https://bitbucket.org/tomcharnock/imnn-tf/raw/master/eq/png/boldsymbol_theta-2.png
-.. |partial_boldsymb| image:: https://bitbucket.org/tomcharnock/imnn-tf/raw/master/eq/png/partial_boldsymb.png
-.. |lambda| image:: https://bitbucket.org/tomcharnock/imnn-tf/raw/master/eq/png/lambda.png
-.. |alpha| image:: https://bitbucket.org/tomcharnock/imnn-tf/raw/master/eq/png/alpha.png
+.. |bf_d| image:: https://github.com/InformationMaximisingNeuralNetworks/imnn-tf/raw/master/eq/png/bf_d.png
+.. |f_bf_d_to_bf_x| image:: https://github.com/InformationMaximisingNeuralNetworks/imnn-tf/raw/master/eq/png/f_bf_d_to_bf_x.png
+.. |bf_x| image:: https://github.com/InformationMaximisingNeuralNetworks/imnn-tf/raw/master/eq/png/bf_x.png
+.. |bf_d^textrm_fid_| image:: https://github.com/InformationMaximisingNeuralNetworks/imnn-tf/raw/master/eq/png/bf_d^textrm_fid_.png
+.. |boldsymbol_theta| image:: https://github.com/InformationMaximisingNeuralNetworks/imnn-tf/raw/master/eq/png/boldsymbol_theta.png
+.. |bf_x^textrm_fid_| image:: https://github.com/InformationMaximisingNeuralNetworks/imnn-tf/raw/master/eq/png/bf_x^textrm_fid_.png
+.. |bf_C_f| image:: https://github.com/InformationMaximisingNeuralNetworks/imnn-tf/raw/master/eq/png/bf_C_f.png
+.. |bf_d^textrm_fid_-1| image:: https://github.com/InformationMaximisingNeuralNetworks/imnn-tf/raw/master/eq/png/bf_d^textrm_fid_-1.png
+.. |boldsymbol_theta-1| image:: https://github.com/InformationMaximisingNeuralNetworks/imnn-tf/raw/master/eq/png/boldsymbol_theta-1.png
+.. |bf_d^textrm_fid_-2| image:: https://github.com/InformationMaximisingNeuralNetworks/imnn-tf/raw/master/eq/png/bf_d^textrm_fid_-2.png
+.. |boldsymbol_theta-2| image:: https://github.com/InformationMaximisingNeuralNetworks/imnn-tf/raw/master/eq/png/boldsymbol_theta-2.png
+.. |partial_boldsymb| image:: https://github.com/InformationMaximisingNeuralNetworks/imnn-tf/raw/master/eq/png/partial_boldsymb.png
+.. |lambda| image:: https://github.com/InformationMaximisingNeuralNetworks/imnn-tf/raw/master/eq/png/lambda.png
+.. |alpha| image:: https://github.com/InformationMaximisingNeuralNetworks/imnn-tf/raw/master/eq/png/alpha.png

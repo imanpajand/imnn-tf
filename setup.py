@@ -7,12 +7,12 @@ setuptools.setup(
     name="imnn-tf",
     version="0.2.0",
     author="Tom Charnock",
-    author_email="tom@charnock.fr",
+    author_email="imnn_dev@protonmail.com",
     description="Using neural networks to extract sufficient statistics from \
         data by maximising the Fisher information",
     long_description=long_description,
     long_description_content_type="text/x-rst",
-    url="https://bitbucket.org/tomcharnock/imnn-tf",
+    url="https://github.com/InformationMaximisingNeuralNetworks/imnn-tf",
     packages=["imnn_tf", "imnn_tf.lfi", "imnn_tf.utils"],
     classifiers=[
         "Programming Language :: Python :: 3.7",
